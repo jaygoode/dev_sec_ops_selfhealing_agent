@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class BaseTool(ABC):
+class MCPTool(ABC):
     name:str
     description:str
 
