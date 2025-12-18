@@ -33,3 +33,5 @@ def store_failure(signature, attempted_fix, reason, confidence, context):
         }],
         ids=[str(uuid.uuid4())]
     )
+
+    
