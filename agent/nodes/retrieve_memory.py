@@ -1,24 +1,24 @@
+from agent.memory.remediation import retrieve_similar_remediations
+from agent.memory.failures import retrieve_similar_failures
+
 def retrieve_memory(
     state: dict,
     remediation_store,
     failure_store,
     top_k: int = 3,
 ) -> dict:
-    """
-    Retrieve relevant historical remediation and failure memory
-    for the current security finding.
-    """
-
     signature = state["finding_signature"]
 
-    successful_fixes = remediation_store.similarity_search(
-        query=signature,
-        k=top_k,
+    successful_fixes = retrieve_similar_remediations(
+        remediation_store=remediation_store,
+        signature=signature,
+        top_k=top_k,
     )
 
-    failures = failure_store.similarity_search(
-        query=signature,
-        k=top_k,
+    failures = retrieve_similar_failures(
+        failure_store=failure_store,
+        signature=signature,
+        top_k=top_k,
     )
 
     state["memory"] = {
