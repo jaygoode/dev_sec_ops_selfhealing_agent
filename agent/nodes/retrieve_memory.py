@@ -1,5 +1,5 @@
 from ..memory.failures import store_failure
-from ..memory.remediation import store_successful_fix, retrieve_similar_fixes
+from ..memory.remediation import retrieve_similar_fixes
 
 def retrieve_memory(state):
     signature = state["finding_signature"]
