@@ -25,7 +25,7 @@ def apply_fix(state: dict, repo_path: str = ".", mcp_tools: list = None) -> dict
         state["applied_branch"] = branch_name
         subprocess.run(["git", "checkout", "-b", branch_name], cwd=repo_path, check=True)
 
-        # Ensure affected files exist (for new files)
+        # Ensure creation of new files if new files have been added in fix
         for f in affected_files:
             file_path = Path(repo_path) / f
             if not file_path.exists():
