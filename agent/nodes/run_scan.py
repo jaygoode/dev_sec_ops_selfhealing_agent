@@ -8,3 +8,4 @@ def run_security_scan(state):
     state["findings"] = result.get("findings", [])
 
     return state
+

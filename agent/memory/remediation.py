@@ -4,6 +4,7 @@ import uuid
 store = VectorStore()
 
 def store_successful_remediation(signature, remediation_type, files, confidence, delta):
+    #TODO do we want to add context here as well?
     store.remediation.add(
         documents=[signature],
         metadatas=[{

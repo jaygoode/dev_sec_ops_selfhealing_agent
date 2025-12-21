@@ -1,4 +1,4 @@
-def derive_context(state) -> dict:
+def derive_failure_context(state) -> dict:
     return {
         "runtime": state.get("runtime", "unknown"),
         "framework": state.get("framework", "unknown"),
