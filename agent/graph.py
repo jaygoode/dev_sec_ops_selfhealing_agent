@@ -72,6 +72,14 @@ graph.add_edge("apply_fix", "run_tests")
 graph.add_edge("run_tests", "calculate_confidence")
 
 # ─────────────────────────────
+# Connect persistence to finalize or retry
+# ─────────────────────────────
+graph.add_edge("persist_success", "finalize")
+graph.add_edge("create_pr", "finalize")
+graph.add_edge("request_human_review", "finalize")
+graph.add_edge("persist_failure", "apply_fix")
+
+# ─────────────────────────────
 # Confidence routing (single gate)
 # ─────────────────────────────
 
@@ -97,12 +105,3 @@ graph.add_conditional_edges(
         "abort": "abort",
     }
 )
-
-# ─────────────────────────────
-# Connect persistence to finalize or retry
-# ─────────────────────────────
-graph.add_edge("persist_success", "finalize")
-graph.add_edge("create_pr", "finalize")
-graph.add_edge("request_human_review", "finalize")
-graph.add_edge("persist_failure", "apply_fix")
-
