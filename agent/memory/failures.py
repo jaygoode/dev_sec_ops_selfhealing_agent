@@ -1,21 +1,7 @@
-from .vector_store import VectorStore
-import uuid
-from .context import derive_failure_context
+from typing import Dict
 
-store = VectorStore()
-
-def store_failure(signature, attempted_fix, reason, confidence, state):
-    context = derive_failure_context(state)
-
-    store.failures.add(
-        documents=[signature],
-        metadatas=[{
-            "attempted_fix": attempted_fix,
-            "reason": reason,
-            "confidence": confidence,
-            "context": context
-        }],
-        ids=[str(uuid.uuid4())]
-    )
-
-    
+def persist_failure_to_store(failure_store, failure_doc: Dict):
+    """
+    Persist a failure event to the failure memory vector store.
+    """
+    failure_store.add_documents([failure_doc])

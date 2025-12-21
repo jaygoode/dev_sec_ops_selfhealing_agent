@@ -1,15 +1,29 @@
-from ..memory.failures import store_failure
-from ..memory.remediation import retrieve_similar_fixes
+def retrieve_memory(
+    state: dict,
+    remediation_store,
+    failure_store,
+    top_k: int = 3,
+) -> dict:
+    """
+    Retrieve relevant historical remediation and failure memory
+    for the current security finding.
+    """
 
-def retrieve_memory(state):
     signature = state["finding_signature"]
 
-    fixes = retrieve_similar_fixes(signature)
-    failures = store_failure(signature)
+    successful_fixes = remediation_store.similarity_search(
+        query=signature,
+        k=top_k,
+    )
+
+    failures = failure_store.similarity_search(
+        query=signature,
+        k=top_k,
+    )
 
     state["memory"] = {
-        "successful_fixes": fixes,
-        "failures": failures
+        "successful_fixes": successful_fixes,
+        "failures": failures,
     }
 
     return state
