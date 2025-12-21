@@ -52,6 +52,7 @@ def generate_fix(state: dict, remediation_store, failure_store, model_name:str) 
             Only return JSON, do not include any other text.
             """
     
+    #TODO use schema with structured output parsing
     client = Ollama(model_name)
     raw_response = client.chat(prompt)
 
