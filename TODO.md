@@ -15,4 +15,6 @@ add derive context function for remediation vector store as well?
     )
 
 
-understand the confidence model
+-understand the confidence model
+-vectorize mcp tools results
+-graph.add_node("run_scan", run_security_scan)  - need to use lambda and pass state=?

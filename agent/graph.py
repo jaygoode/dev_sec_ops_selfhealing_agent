@@ -37,7 +37,14 @@ graph.add_node(
     )
 )
 
-graph.add_node("apply_fix", apply_fix)
+graph.add_node(
+    "apply_fix",
+    lambda state: apply_fix(
+        state,
+        repo_path="/path/to/your/repo", #TODO Make dynamic
+        mcp_tools=["black", "bandit"]   #TODO Make configurable
+    )
+)
 graph.add_node("run_tests", run_tests)
 graph.add_node("calculate_confidence",calculate_confidence)
 
