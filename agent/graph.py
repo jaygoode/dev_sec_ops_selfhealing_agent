@@ -82,7 +82,7 @@ graph.add_node(
     )
 )
 
-# graph.add_node("request_human_review", request_human_review)
+graph.add_node("request_human_review", lambda state: request_human_review(state, repo_path="/path/to/your/repo")) # TODO Make dynamic
 # graph.add_node("abort", abort_run)
 
 # ─────────────────────────────
