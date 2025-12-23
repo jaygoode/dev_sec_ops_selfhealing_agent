@@ -8,7 +8,7 @@ def apply_fix(state: dict, repo_path: str = ".", mcp_tools: list = None) -> dict
     state["fix_applied"] = False
     state["apply_errors"] = []
     state["applied_branch"] = None
-    state["timestamp"] = datetime.now(datetime.timezone.utc).isoformat()
+    state["timestamp"] = datetime.now().isoformat()
 
     if mcp_tools is None:
         mcp_tools = ["black", "bandit"]

@@ -34,7 +34,7 @@ def persist_failure(state: dict, failure_store, top_k: int = 5) -> dict:
         "failure_reason": state.get("failure_reason", "confidence_gate_reject"),
         "confidence": state.get("confidence"),
         "context_metadata": derive_failure_context(state),
-        "timestamp": datetime.now(datetime.timezone.utc).isoformat(),
+        "timestamp": datetime.now().isoformat(),
     }
 
     persist_failure_to_store(failure_store, failure_doc)

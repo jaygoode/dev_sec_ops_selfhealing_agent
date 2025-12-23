@@ -29,6 +29,7 @@ def generate_fix(state: dict, remediation_store, failure_store, model_name:str) 
         state["fix_reasoning"] = "No finding_signature provided."
         return state
     
+    #TODO just get this from state right? state memory is hydrated with this data into memory key
     similar_success = retrieve_similar_remediations(remediation_store, signature, top_k=3)
     similar_failures = retrieve_similar_failures(failure_store, signature, top_k=3)
 

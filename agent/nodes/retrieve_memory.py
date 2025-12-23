@@ -7,6 +7,8 @@ def retrieve_memory(
     failure_store,
     top_k: int = 3,
 ) -> dict:
+    
+    #TODO what is this finding signature? why is this selected?
     signature = state["finding_signature"]
 
     successful_fixes = retrieve_similar_remediations(

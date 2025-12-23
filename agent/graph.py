@@ -9,7 +9,7 @@ from agent.nodes.persist_failure import persist_failure
 from agent.nodes.persist_success import persist_success
 # from agent.nodes.run_tests import run_tests
 from agent.nodes.create_pr import create_pr
-# from agent.nodes.request_human_review import request_human_review
+from agent.nodes.request_human_review import request_human_review
 # from agent.nodes.abort import abort_run
 
 # ─────────────────────────────
@@ -65,6 +65,7 @@ graph.add_node(
         failure_store=vector_store.failures
     )
 )
+
 graph.add_node(
     "persist_success",
     lambda state: persist_success(
@@ -73,7 +74,14 @@ graph.add_node(
     )
 )
 
-# graph.add_node("create_pr", create_pr)
+graph.add_node(
+    "create_pr",
+    lambda state: create_pr(
+        state,
+        repo_path="/path/to/your/repo", #TODO Make dynamic
+    )
+)
+
 # graph.add_node("request_human_review", request_human_review)
 # graph.add_node("abort", abort_run)
 
