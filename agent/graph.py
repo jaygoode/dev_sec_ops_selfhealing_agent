@@ -8,7 +8,7 @@ from agent.nodes.calculate_confidence import calculate_confidence
 from agent.nodes.persist_failure import persist_failure
 from agent.nodes.persist_success import persist_success
 # from agent.nodes.run_tests import run_tests
-# from agent.nodes.create_pr import create_pr
+from agent.nodes.create_pr import create_pr
 # from agent.nodes.request_human_review import request_human_review
 # from agent.nodes.abort import abort_run
 
@@ -75,13 +75,13 @@ graph.add_node(
 
 # graph.add_node("create_pr", create_pr)
 # graph.add_node("request_human_review", request_human_review)
-# graph.add_node("persist_success", persist_success)
 # graph.add_node("abort", abort_run)
 
 # ─────────────────────────────
 # Edges (execution order)
 # ─────────────────────────────
 graph.set_entry_point("run_scan")
+
 graph.add_edge("run_scan", "retrieve_memory")
 graph.add_edge("retrieve_memory", "apply_fix")
 graph.add_edge("apply_fix", "run_tests")
