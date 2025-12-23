@@ -46,3 +46,6 @@ agentic workflows like hybrid bigger solutions
 
 learn langsmith 
 context engineering
+-mcp tools modelcontextprotocol python-sdk 
+-mcp server FastMCP lib
+-sse http protocol for server

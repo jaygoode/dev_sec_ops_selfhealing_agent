@@ -12,7 +12,7 @@ def persist_success(state: dict, remediation_store) -> dict:
         "confidence": state.get("confidence"),
         "delta": state.get("finding_delta"),
         "outcome": "merged",
-        "timestamp": datetime.now(datetime.timezone.utc).isoformat(),
+        "timestamp": datetime.now().isoformat(),
     }
 
     persist_successful_remediation(remediation_store, remediation_doc)
